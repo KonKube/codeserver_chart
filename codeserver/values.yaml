@@ -1,0 +1,151 @@
+nameOverride: ""
+fullnameOverride: ""
+
+image: "konkube/code-server"
+imageTag: "202110"
+imagePullPolicy: "IfNotPresent"
+imagePullSecrets: []
+
+replicas: 1
+
+updateStrategy:
+  type: "Recreate"
+
+labels: {}
+
+podAnnotations: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+service: []
+  # - name: http
+  #   type: ClusterIP
+  #   port: 80
+  #   targetPort: 80
+  #   protocol: TCP
+  # - name: https
+  #   type: ClusterIP
+  #   port: 443
+  #   targetPort: 443
+  #   protocol: TCP
+
+
+extraEnvs: []
+# - name: TZ
+#   value: "Europe/Berlin"
+
+envFrom: []
+# - secretRef:
+#     name: secretname
+# - configMapRef:
+#     name: configmap
+
+secretMounts: []
+# - name: somesecret
+#   secretName: some-secret
+#   path: /usr/share/secrets
+#   subPath: some-secret
+
+encryptedSecrets: {}
+#  PASSWORD: "**********"
+
+resources: {}
+#  requests:
+#    cpu: "100m"
+#    memory: "256Mi"
+#  limits:
+#    cpu: "200m"
+#    memory: "512Mi"
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+
+priorityClassName: ""
+
+extraConfigMap: []
+  # - name: example-script.sh
+  #   path: /tmp/
+  #   mode: 0755
+  #   content: |
+  #     #!/bin/bash
+  #     echo "Hello World!"
+ 
+extraVolumes: []
+  # - name: extravolume
+  #   emptyDir: {}
+
+extraVolumeMounts: []
+  # - name: extramount
+  #   mountPath: /usr/share/extramount
+  #   readOnly: true
+  
+extraContainers: ""
+# - name: sidecar
+#   image: busybox
+#   command: ['echo', 'helloworld!']
+
+extraInitContainers: ""
+# - name: init
+#   image: busybox
+#   command: ['echo', 'helloworld!']
+
+ingress:
+  enabled: "false"
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+readinessProbe: {}
+  # httpGet:
+  #   path: /healthz
+  #   port: 8080
+  # initialDelaySeconds: 60
+  # periodSeconds: 10
+  # timeoutSeconds: 5
+  # failureThreshold: 3
+  # successThreshold: 1
+
+livenessProbe: {}
+  # httpGet:
+  #   path: /healthz
+  #   port: 8080
+  # initialDelaySeconds: 60
+  # periodSeconds: 10
+  # timeoutSeconds: 5
+  # failureThreshold: 3
+  # successThreshold: 1
+
+lifecycle: {}
+  # preStop:
+  #   exec:
+  #     command: ["/bin/sh", "-c", "echo Helloworld"]
+  # postStart:
+  #   exec:
+  #     command: ["/bin/sh", "-c", "echo Helloworld"]
+
+hostAliases: []
+# - ip: "127.0.0.1"
+#   hostnames:
+#   - "some.local"
+#   - "cloud.local"
+
+podDnsConfig: {}
+  # policy: "None"
+  # nameservers:
+  # - 8.8.4.4
+  # - 8.8.8.8

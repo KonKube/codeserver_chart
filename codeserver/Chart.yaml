@@ -1,0 +1,9 @@
+apiVersion: v2
+description: Inofficial helm chart for Pi-hole
+home: https://github.com/KonKube/codeserver_chart
+maintainers:
+- email: konkube@gmail.com
+  name: KonKube
+name: codeserver
+version: 1.0.0
+appVersion: 2021.10
